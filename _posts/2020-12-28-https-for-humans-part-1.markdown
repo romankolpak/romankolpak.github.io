@@ -57,14 +57,14 @@ Now we need for both parties in our communication link to know this key, so that
 {: .centered}
 ![not secure!](/assets/comms-drawing-3.png)
 
-But remember, we have a malicious party sitting and listening to our communications, and if they were looking patiently, they saw that the message from server to the user had an interesting piece of data in it and will probably be able to deduce that that data was an encryption key in plain text. Even though all message between our user and the website server were encrypted from that point of time, the key had been leaked and thus could have been be used to decrypt messages and see everything.
+But remember, we have a malicious party sitting and listening to our communications, and if they were looking patiently, they saw that the message from server to the user had an interesting piece of data in it and will probably be able to deduce that that data was an encryption key in plain text. Even though all message between our user and the website server were encrypted from that point of time, the key had been leaked and thus could have been used to decrypt messages and see everything.
 
 {: .centered}
 ![not secure!](/assets/comms-drawing-4.png)
 
 So this is not a secure channel for communication, even though we applied encryption.
 
-It appears that we need a way to distribute the encryption key in a such a way that in doesn’t compromise our secure communication channel. Turns out that this has always been a big problem for humans until relatively recently. For example, during World Word II Germans distributed keys to the infamous Enigma machine using military couriers in books made of easily destroyable paper and ink. They had to re-distribute new sets of keys each month in case some of the them were leaked. Distributing keys securely has always been an expensive and problematic aspect of encryption.
+It appears that we need a way to distribute the encryption key in a such a way that it doesn’t compromise our secure communication channel. Turns out that this has always been a big problem for humans until relatively recently. For example, during World Word II Germans distributed keys to the infamous Enigma machine using military couriers in books made of easily destroyable paper and ink. They had to re-distribute new sets of keys each month in case some of them were leaked. Distributing keys securely has always been an expensive and problematic aspect of encryption.
 
 In the 1970s a bunch of smart folks invented [RSA algorithm](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) removing the need to distribute a key used for decrypting data by a clever use of mathematics of prime numbers. There was not a single key anymore, but instead a key pair with a public key and a private key. You encrypt data with the public key and decrypt it with private one. Public key can be freely distributed over insecure channels as it doesn’t compromise security -- it’s not usable for decrypting data. This is why it’s called asymmetric - one key allows you to only encrypt and another key allows you to only decrypt, you can’t just use the same key both ways.
 
