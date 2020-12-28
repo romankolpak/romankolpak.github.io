@@ -9,7 +9,7 @@ I always felt uneasy about HTTPS. I knew it worked. I knew all my web stuff need
 {: .centered.v-whitespace-happy}
 ![not secure!](/assets/not-secure.png)
 
-But I never knew exactly what happens under the hood. When I looked around the internet to find answers, Google presented me with a ton of ads trying to sell me certificates and some technical articles diving very deeply into the gory details and escaping my short attention span. But I forced myself through it and decided to write a human-friendly overview of how HTTP works, to help myself remember it and maybe help someone else understand it.
+But I never knew exactly what happens under the hood. When I looked around the internet to find answers, Google presented me with a ton of ads trying to sell me certificates and some technical articles diving very deeply into the gory details and escaping my short attention span. But I forced myself through it and decided to write a human-friendly overview of how HTTPS works, to help myself remember it and maybe help someone else understand it.
 
 ## What’s HTTPS?
 
