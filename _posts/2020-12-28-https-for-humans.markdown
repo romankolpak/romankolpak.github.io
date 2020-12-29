@@ -84,7 +84,7 @@ Website first sends us a public key and the asymmetric encryption algorithm it�
 {: .centered}
 ![secure channel at last](/assets/comms-drawing-6.png)
 
-There is still one gaping hole in our setup though. Even though we managed to get a secure channel between the user and the website, how do we know the website is what they claim to be? How do we know that the party talking to us on the other end of the line is _trusted_? Because if it’s not trusted, no matter how secure our channel of communication will be, it’s all compromised — the user could end up downloading a bunch of malware or leaking their credit card information.
+But unfortunately this wasn’t enough to claim success. There’s still one attack angle which we didn’t cover - attackers could [“insert”](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) themselves in the middle of our communication and alter the messages! When the user is sending their “hello” over the wire and gets a “hello” back, they need some sort of proof that the party saying “hello” back is actually the website they wanted to talk to, not some sweaty dude in a basement trying to steal some credit card information.
 
 This is where Certificates and Digital Signatures come into play.
 
