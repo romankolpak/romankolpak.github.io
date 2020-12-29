@@ -77,3 +77,18 @@
 .v-whitespace-happy {
   margin-top: 2rem;
 }
+
+.post-feed {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: flex;
+  }
+
+  li a, li span {
+    display: block;
+    margin: 0.5rem 1rem;
+  }
+}
