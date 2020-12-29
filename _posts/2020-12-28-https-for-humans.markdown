@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "HTTPS for Humans: Encryption"
+title:  "HTTPS for Humans"
 date:   2020-12-28 00:06:31 +0200
-categories: https encryption
+categories: https
 ---
 I always felt uneasy about HTTPS. I knew it worked. I knew all my web stuff needs to use it. Browsers now tell you explicitly that you’re in the scary land of “Not Secure” when you visit a website not using HTTPS.
 
@@ -84,6 +84,36 @@ Website first sends us a public key and the asymmetric encryption algorithm it�
 {: .centered}
 ![secure channel at last](/assets/comms-drawing-6.png)
 
-There is still one gaping hole in our setup though. Even though we managed to get a secure channel between the user and the website, how do we know the website is what they claim to be? How do we know that the party talking to us on the other end of the line is _trusted_? Because if it’s not trusted, no matter how secure our channel of communication will be, it’s all compromised — the user could end up downloading a bunch of malware.
+There is still one gaping hole in our setup though. Even though we managed to get a secure channel between the user and the website, how do we know the website is what they claim to be? How do we know that the party talking to us on the other end of the line is _trusted_? Because if it’s not trusted, no matter how secure our channel of communication will be, it’s all compromised — the user could end up downloading a bunch of malware or leaking their credit card information.
 
-This is where Certificates and Digital Signatures come into play. We'll talk about them in the [Part 2]({% post_url 2020-12-29-https-for-humans-part-2 %}).
+This is where Certificates and Digital Signatures come into play.
+
+## Certificates
+
+We can setup a scheme akin to governments issuing passports which are then used for proof of identity. We’ll have the website show us their “passport” before we continue exchanging information with it. We’ll examine the passport to make sure it’s not fake and is not issued by the same sweaty dude in the basement and we’ll know that the website is the real deal. We’ll call those “passports” *Certificates* and the government issuing them -- a *Certificate Authority*. 
+
+
+{: .centered}
+![Kakie vashi dokazatelstva?](/assets/comms-drawing-7.png)
+
+But how do we create a _digital_ proof of identity? Turns out [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) comes to the rescue again.
+
+## Digital Signatures
+
+We haven’t talked about another awesome feature of RSA yet. Remember how we claimed that you can only encrypt data with public key and decrypt with private one? That’s not entirely true — you can actually flip this process and ENCRYPT data with the private key and decrypt it with public one. How is this useful though, you might ask? Public key is… public so anyone could decrypt the message and see its contents.
+
+Turns out you can use it for signatures! The fact that you are ABLE to decrypt data means that the cipher could only come from the real holder of the private key. If someone else wanted to hack their way into this process and offer you a cipher text obtained with a wrong private key, you’ll be able to tell something is off — your public key doesn’t let you decrypt the data, i.e. when you decrypt the cipher the message doesn't make any sense!
+
+So knowing this feature of RSA we can now make the website send a private key-encrypted piece of information we’ll call signature in its response to the user’s initial “hello” message. But which private key encrypts this signature and which public key should be used to decrypt it? Previously we've established that the website has its own key pair which was used to setup the secure communication channel, but it’s not really usable here — if the signature is encrypted by the same website’s private key, the fact that we can decrypt it doesn’t prove us anything. It could be the same sweaty credit card-stealing person.
+
+Remember, we’re trying to make this signature a proof of website’s identity, and in our government-issued passports analogy we established a trusted authority figure which we trust — a *certificate authority* (CA). So let’s ask these CA guys encrypt the website’s certificate contents with *their private key* and that would be our signature! We’ll make our website include this signature inside the certificate along with the other data it was sending to the user, so the user could then use a known public key of the CA to decrypt the signature thus verifying that the website went to the CA and registered themselves and was given a “passport”. Don't worry, the user won't need to keep track of the all known CAs' public keys -- browsers do this for them.
+
+{: .centered}
+![Hold up, imma check this](/assets/comms-drawing-8.png)
+
+If the user managed to decrypt the signature and what they’ve got matched the certificate contents (including stuff like domain name), that would give them enough proof that some CA indeed issued this certificate to this particular website. There was indeed a government issuing this passport for this website at some point and the government’s seal in the passport matched the user’s expectations. 
+
+So now not only our communication channel is secured with encryption, we also have a mechanism for the website to prove their identity to users using digital signatures and certificate authorities. 
+
+The user and the website can finally talk in peace, securely.
+
