@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "HTTPS For Humans: Encryption"
+title:  "HTTPS for Humans: Encryption"
 date:   2020-12-28 00:06:31 +0200
 categories: https encryption
 ---
