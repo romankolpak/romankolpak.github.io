@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "HTTPS for Humans"
+description: "An explanation of the secure extension of HTTP in simple terms"
 date:   2020-12-28 00:06:31 +0200
 categories: https
 ---
