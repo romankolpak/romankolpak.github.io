@@ -39,7 +39,7 @@ The math here is very simple -- we bought the stock at $1190, held it and then s
 {: .centered.v-whitespace-happy}
 ![Buy & Hold](/assets/buynhold.png)
 
-### Using The Tools
+### Using the Tools
 
 In this strategy, after buying the stock we wait for signal to sell, because we’d like to follow the movement of the big guys. Once sold, we wait for the signal to buy. The signals need to come from all 3 indicators:
 
