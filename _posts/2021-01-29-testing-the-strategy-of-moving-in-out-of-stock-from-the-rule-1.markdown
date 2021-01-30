@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Testing the Strategy of Moving in & out of Stock from the Rule #1 Book on Investing"
-description: "A test of the technical analysis strategy offered by the "Rule #1: The Simple Strategy for Successful Investing in Only 15 Minutes a Week!" book on a real-world example"
+description: "A test of the technical analysis strategy offered by the \"Rule #1: The Simple Strategy for Successful Investing in Only 15 Minutes a Week!\" book on a real-world example"
 date: 2021-01-29 12:06:31 +0200
 categories: investing
 ---
