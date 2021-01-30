@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Testing the Strategy of Moving in & out of Stock from the Rule #1 Book on Investing"
-description: "A test of the technical analysis strategy offered by the book on a real-world example"
-date:   2021-01-29 12:06:31 +0200
+description: "A test of the technical analysis strategy offered by the "Rule #1: The Simple Strategy for Successful Investing in Only 15 Minutes a Week!" book on a real-world example"
+date: 2021-01-29 12:06:31 +0200
 categories: investing
 ---
 I found the [Rule #1](https://www.goodreads.com/book/show/24006.Rule_1) book on Youtube while poking around the clickbaity videos recommending books on investing. The channel giving the book especially great amount of praise was [New Money](https://www.youtube.com/channel/UCvSXMi2LebwJEM1s4bz5IBA) with around 200k subscribers. At the time of writing this, the book had an average rating of 4.09 with 2k+ reviews on Goodreads. This made me think that it's actually good and gives solid advice. Which I think it did, but one part of it in particular sounded especially good and it also happened to very testable against real-world data.
