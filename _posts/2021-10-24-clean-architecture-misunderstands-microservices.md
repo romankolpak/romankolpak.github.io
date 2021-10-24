@@ -37,7 +37,7 @@ A better way to design a service architecture is to model around business domain
 
 We went from having a `TaxiSelector`, `TaxiFinder`, `TaxiDispatcher` to having a single `Rides API` service handling all of those functions.
 
-## Didn't we just went from microservices to a monolith?
+## Didn't we just go from microservices to a monolith?
 
 Heck yes, we did! We went from a distributed monolith architecture to an actual small monolith, which is the most practical architecture for the system of this complexity and purpose.
 
