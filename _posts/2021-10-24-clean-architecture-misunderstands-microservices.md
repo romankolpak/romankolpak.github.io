@@ -24,7 +24,7 @@ Every box in the diagram is a service:
 
 The architecture Robert came up with here has a name -- it's a distributed monolith. All of the services comprising the system exist within the same business domain and are all highly cohesive. The separation into separate services is done based on function, not [bounded context](https://martinfowler.com/bliki/BoundedContext.html) boundary -- for selecting taxis we have a `TaxiSelector` service, for finding there is `TaxiFinder`, etc. No wonder that in order to delivery a new feature you have to change all the services and coordinate their deployment -- such is the design of the system!
 
-So the author of the book attempts to trick you by giving you an example of a badly architected microservice-based system so later he can say "see? microservices are bad". That's a very dangerous manipilation staining the whole book for me.
+So the author of the book attempts to trick you by giving you an example of a badly architected microservice-based system so later he can say "see? microservices are bad".
 
 ## A better way to do microservices
 
@@ -39,7 +39,7 @@ We went from having a `TaxiSelector`, `TaxiFinder`, `TaxiDispatcher` to having a
 
 ## Didn't we just went from microservices to a monolith?
 
-Heck yes, we did! We went from a distributed monolith architecture to an actual small monolith, which is the most practical architecture for the system of this complexity and purpose. 
+Heck yes, we did! We went from a distributed monolith architecture to an actual small monolith, which is the most practical architecture for the system of this complexity and purpose.
 
 A good example of microservice-based evolution of this system would be to add a new service called `MovingTrucks API` when your business decides to also offer ability to request a moving truck in addition for doing taxis. Moving trucks is a new business capability and a separate source of complexity very much independent of taxis, so it's only natural to develop, test and deploy that part of the business separately from the Rides business. This is what microservice-based architecture is all about -- it's not about the size of the service, but rather it's about the business domain it is modelling. I like to think of microservice architecture as a set of smaller monoliths for each individual business domain of your software.
 
