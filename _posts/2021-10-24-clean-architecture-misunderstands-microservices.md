@@ -5,7 +5,7 @@ description: "A bizzare criticism of microservice-based architectures in the Cle
 date:   2021-10-24 22:30:31 +0200
 categories: microservices
 ---
-In the Chapter 27 "Services: Great and Small" in his ["Clean Archicture" book](https://www.amazon.com/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164) Robert Martin criticizes the service architectures (aka microservices) in a way that seemed very bizzare to me. He "challenges the orthodoxy" by tellings us that the supposed benefits of microservices, such as independent deployment and development, are fallacies and in reality services are coupled and can not be independently developed and deployed. He argues that services can be coupled by using shared resources and data and... that's it. This is all the argumentation he uses to call the independent deployment and development of service architecture falacies. Services can be coupled by sharing resources, thus the whole idea of the service architecture must be a mistake.
+In the Chapter 27 "Services: Great and Small" in his ["Clean Archicture" book](https://www.amazon.com/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164) Robert Martin criticizes the service architectures (aka microservices) in a way that seemed very bizzare to me. He "challenges the orthodoxy" by tellings us that the supposed benefits of microservices, such as independent deployment and development, are fallacies and in reality services are coupled and can not be independently developed and deployed. He argues that services can be coupled by using shared resources and data and... that's it. This is all the argumentation he uses to call the independent deployment and development of service architecture fallacies. Services can be coupled by sharing resources, thus the whole idea of the service architecture must be a mistake.
 
 It's not hard to pick this logic apart, since obviously you don't have to have services which use the same data or same resources -- it all depends on how you architect the system (the very topic the book is trying to help do cleanly!).
 
@@ -22,13 +22,13 @@ Every box in the diagram is a service:
 
 > “The TaxiFinder service examines the inventories of the various TaxiSuppliers and determines which taxies are possible candidates for the user. It deposits these into a short-term data record attached to that user. The TaxiSelector service takes the user’s criteria of cost, time, luxury, and so forth, and chooses an appropriate taxi from among the candidates. It hands that taxi off to the TaxiDispatcher service, which orders the appropriate taxi”
 
-The architecture Robert came up with here has a name -- it's a distributed monolith. All of the services comprising the system exist within the same business domain and are all highly cohesive. The separation into separate services is done based on function, not [bounded context](https://martinfowler.com/bliki/BoundedContext.html) boundary -- for selecting taxis we have a `TaxiSelector` service, for finding there is `TaxiFinder`, etc. No wonder that in order to delivery a new feature you have to change all the services and coordinate their deployment -- such is the design of the system!
+The architecture Robert came up with here has a name -- it's a distributed monolith. All of the services comprising the system exist within the same business domain and are all highly cohesive. The separation into separate services is done based on function, not [bounded context](https://martinfowler.com/bliki/BoundedContext.html) boundary -- for selecting taxis we have a `TaxiSelector` service, for finding there is `TaxiFinder`, etc. No wonder that in order to deliver a new feature you have to change all the services and coordinate their deployment -- such is the design of the system!
 
-So the author of the book attempts to trick you by giving you an example of a badly architected microservice-based system so later he can say "see? microservices are bad".
+So the author of the book attempts to trick you by giving you an example of a badly architected microservice-based system, so later he can say "see? microservices are bad".
 
 ## A better way to do microservices
 
-In his criticism, Robert Martin seemingly thought that doing microservices means taking each business logic group of your app, like the logic of taxi selection, and moving it into a separate HTTP service, which sounds like a recipe for an unmaintainable disaster.
+In his criticism Robert Martin seemingly thought that doing microservices means taking each business logic group of your app, like the logic of taxi selection, and moving it into a separate HTTP service, which sounds like a recipe for an unmaintainable disaster.
 
 A better way to design a service architecture is to model around business domains. In the taxi aggregator example we have a small system in the business of rides, meaning that we're letting users to order them and to accomplish this we aggregate data from 3rd-party providers and let users choose a taxi. Since the system exists within a boundary of a single business domain of rides, we can get away with ONE service exposing an HTTP API to find and order rides:
 
